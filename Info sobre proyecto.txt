@@ -1,0 +1,12 @@
+La estructura del proyecto es 
+por capas y orientada a los dominios
+
+
+Tres tipos de repositorios:
+
+CrudRepository: realizar el crue
+PagingAndSortingRepository: incluye lo de Crud repository ademas de paginación y ordenamiento.
+JPARepository: Ademas de tener CrudRepository y PagingAndSortingRepository nos permite tareas específicas como Flush.
+
+DOCUMENTACION QUERY METHODS
+https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods
