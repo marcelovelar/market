@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Optional;
 
 //@Repository : Con esta anotación le indicamos que esta clase se encarga de interactuar con la base de datos
+
+
 @Repository
 public class ProductoRepository implements ProductRepository {
 
@@ -24,12 +26,16 @@ public class ProductoRepository implements ProductRepository {
 
     @Override
     public Optional<List<Product>> getByCategory(int categoryId) {
-        return Optional.empty();
+        List<Producto> productos = productoCrudRepository.findByIdCategoriaOrderByNombreAsc(categoryId);
+        return Optional.of(mapper.toProducts(productos));
     }
 
+
+    //Metodo map del optional, mas amigable y optimo para el procesador
     @Override
     public Optional<List<Product>> getScarseProducts(int quantity) {
-        return Optional.empty();
+        Optional<List<Producto>> productos = productoCrudRepository.findByCantidadStockLessThanAndEstado(quantity, true);
+        return productos.map(prods -> mapper.toProducts(prods));
     }
 
     @Override
@@ -43,21 +49,8 @@ public class ProductoRepository implements ProductRepository {
         return mapper.toProduct(productoCrudRepository.save(producto));
     }
 
-    public List<Producto> getByCategoria (int idCategoria){
-        return productoCrudRepository.findByIdCategoriaOrderByNombreAsc(idCategoria);
-    }
-    public Optional<List<Producto>> getEscasos(int cantidad){
-        return productoCrudRepository.findByCantidadStockLessThanAndEstado(cantidad, true);
-    }
-    public Optional<List<Producto>> getFalses(boolean b){
-        return productoCrudRepository.findByEstado(false);
-    }
-    public Optional<List<Producto>> getCheaperThan(int precio,int categoria){
-        return productoCrudRepository.findByPrecioVentaLessThanAndByIdCategoria(precio,categoria);
-    }
-
-    public Optional<Producto> getProducto(int id){
-        return productoCrudRepository.findById(id);
+    public Optional<List<Producto>> getCheaperThan(int precio,int idCategoria){
+        return productoCrudRepository.findByPrecioVentaLessThanAndOrderByIdCategoria(precio,idCategoria);
     }
 
     @Override
@@ -65,5 +58,16 @@ public class ProductoRepository implements ProductRepository {
         productoCrudRepository.deleteById(productoId);
     }
 
+    @Override
+    public Optional<List<Product>> getFalses(boolean b){
+        Optional<List<Producto>> productos = productoCrudRepository.findByEstado(false);
+        return productos.map(prods -> mapper.toProducts(prods));
+    }
+
+    @Override
+    public Optional<List<Product>> getCheaperThan(double price, int categoryId) {
+        Optional<List<Producto>> productos = productoCrudRepository.findByPrecioVentaLessThanAndOrderByIdCategoria((int)price,categoryId);
+        return productos.map(prods -> mapper.toProducts(prods));
+    }
 
 }
