@@ -12,3 +12,8 @@ DOCUMENTACION QUERY METHODS
 https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods
 
 IMPLEMENTACIÓN DEL PATRÓN DATA MAPPER
+
+IMPLEMENTACION DEL MAP STRUC
+    Sirve para apuntar las entidades y sus variables a utilizar a sus Mappers
+
+ORIENTAR EL PRODUCTOREPOSITORY AL DOMINIO (IMPLEMENTE EL PRODUCTREPOSITORY)
