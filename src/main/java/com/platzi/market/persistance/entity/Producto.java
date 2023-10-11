@@ -20,7 +20,7 @@ public class Producto {
     private String codigoBarras;
 
     @Column(name = "precio_venta")
-    private Integer precioVenta;
+    private double precioVenta;
 
     @Column (name = "cantidad_stock")
     private Integer cantidadStock;
@@ -67,12 +67,20 @@ public class Producto {
         this.codigoBarras = codigoBarras;
     }
 
-    public Integer getPrecioVenta() {
+    public double getPrecioVenta() {
         return precioVenta;
     }
 
-    public void setPrecioVenta(Integer precioVenta) {
+    public void setPrecioVenta(double precioVenta) {
         this.precioVenta = precioVenta;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     public Integer getCantidadStock() {

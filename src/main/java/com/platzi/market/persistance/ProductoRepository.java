@@ -53,7 +53,7 @@ public class ProductoRepository implements ProductRepository {
     }
 
     public Optional<List<Producto>> getCheaperThan(int precio,int idCategoria){
-        return productoCrudRepository.findByPrecioVentaLessThanAndOrderByIdCategoria(precio,idCategoria);
+        return productoCrudRepository.findByPrecioVentaLessThanAndIdCategoriaOrderByNombreAsc(precio,idCategoria);
     }
 
     @Override
@@ -69,7 +69,7 @@ public class ProductoRepository implements ProductRepository {
 
     @Override
     public Optional<List<Product>> getCheaperThan(double price, int categoryId) {
-        Optional<List<Producto>> productos = productoCrudRepository.findByPrecioVentaLessThanAndOrderByIdCategoria((int)price,categoryId);
+        Optional<List<Producto>> productos = productoCrudRepository.findByPrecioVentaLessThanAndIdCategoriaOrderByNombreAsc((int)price,categoryId);
         return productos.map(prods -> mapper.toProducts(prods));
     }
 
