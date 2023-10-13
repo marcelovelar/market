@@ -26,19 +26,13 @@ public class Compra {
 
     private String estado;
 
-    public void setMedioPago(String medioPago) {
-        this.medioPago = medioPago;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
     @ManyToOne
     @JoinColumn(name = "id_cliente", updatable = false,insertable = false)
     private Cliente cliente;
 
-    @OneToMany(mappedBy = "compra")
+    /*Todos los procesos que se hagan contra la base de datos
+    * de una compra, van a incluir en cascada sus productos*/
+    @OneToMany(mappedBy = "compra", cascade = {CascadeType.ALL} )
     private List<ComprasProducto> productos;
 
 
@@ -91,4 +85,19 @@ public class Compra {
         this.comentario = comentario;
     }
 
+    public String getMedioPago() {
+        return medioPago;
+    }
+
+    public void setMedioPago(String medioPago) {
+        this.medioPago = medioPago;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
 }

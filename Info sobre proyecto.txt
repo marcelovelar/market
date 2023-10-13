@@ -18,3 +18,5 @@ IMPLEMENTACION DEL MAP STRUC
     Sirve para apuntar las entidades y sus variables a utilizar a sus Mappers
 
 ORIENTAR EL PRODUCTOREPOSITORY AL DOMINIO (IMPLEMENTE EL PRODUCTREPOSITORY)
+
+API mejorada con códigos HTTPs ResponsiveEntity

@@ -20,7 +20,8 @@ public class ProductService {
     }
 
     public Optional<Product> getProduct(int productId){
-        return productRepository.getProduct(productId);
+        return
+                productRepository.getProduct(productId);
     }
 
     public Optional<List<Product>> getByCategory(int categoryId){
@@ -35,7 +36,6 @@ public class ProductService {
     *   Opc1: Utilizar un if
     *   Opc2: Evitamos hacer llamado a un if y a un else y usamos map.(óptimo)
     * */
-
     public boolean delete (int productId){
         /*if (getProduct(productId).isPresent()){
             productRepository.delete(productId);
@@ -43,7 +43,6 @@ public class ProductService {
         } else {
             return false;
         }*/
-
         return getProduct(productId).map(product -> {
             productRepository.delete(productId);
             return true;
