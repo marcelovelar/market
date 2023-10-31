@@ -3,6 +3,8 @@ package com.platzi.market.web.controller;
 import com.platzi.market.domain.Product;
 import com.platzi.market.domain.Purchase;
 import com.platzi.market.domain.service.PurchaseService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
